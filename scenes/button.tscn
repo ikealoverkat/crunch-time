@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8gnjbkkm80uy"]
+
+[ext_resource type="Script" uid="uid://dkmik7n2i5nxn" path="res://scripts/button.gd" id="2_rhj8v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhj8v"]
+radius = 27.0
+height = 115.5
+
+[sub_resource type="Animation" id="Animation_mi6dp"]
+resource_name = "hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2588163, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_rhj8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3q610"]
+resource_name = "end_hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.23325822, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i7y4x"]
+resource_name = "click"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(2.9281754, 0.32987702, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bdt2"]
+_data = {
+&"RESET": SubResource("Animation_rhj8v"),
+&"click": SubResource("Animation_i7y4x"),
+&"end_hover": SubResource("Animation_3q610"),
+&"hover": SubResource("Animation_mi6dp")
+}
+
+[node name="Sprite2D" type="Sprite2D"]
+region_enabled = true
+region_rect = Rect2(472, 258.5, 137, 125)
+script = ExtResource("2_rhj8v")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.25, 16)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_rhj8v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1bdt2")
+}
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

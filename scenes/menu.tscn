@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfr4apgl875fw"]
+
+[ext_resource type="Texture2D" uid="uid://bkip8xgwmk3w4" path="res://media/backgrounds/crunchtime_menu_bg.png" id="1_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://dg7m4x5yvg6nn" path="res://media/ui/crunchtime_logo.png" id="2_4ytvr"]
+[ext_resource type="PackedScene" uid="uid://b8gnjbkkm80uy" path="res://scenes/button.tscn" id="3_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://dxh14xufm5mhs" path="res://media/ui/play.png" id="3_g3eks"]
+[ext_resource type="Texture2D" uid="uid://bql0fbxbbsohh" path="res://media/ui/settings.png" id="4_v86rl"]
+[ext_resource type="Script" uid="uid://ci6s335o0yubf" path="res://scripts/settings_button.gd" id="6_g3eks"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CrunchtimeMenuBg" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+texture = ExtResource("1_mhnvy")
+
+[node name="CrunchtimeLogo" type="Sprite2D" parent="."]
+position = Vector2(202.00002, 119)
+scale = Vector2(0.940909, 0.9409091)
+texture = ExtResource("2_4ytvr")
+region_enabled = true
+region_rect = Rect2(0, 11.5, 397, 220)
+
+[node name="play" parent="." instance=ExtResource("3_4ytvr")]
+position = Vector2(535, 312)
+texture = ExtResource("3_g3eks")
+
+[node name="settings" parent="." instance=ExtResource("3_4ytvr")]
+position = Vector2(535, 404)
+texture = ExtResource("4_v86rl")
+region_rect = Rect2(478, 371.5, 129, 98)
+script = ExtResource("6_g3eks")

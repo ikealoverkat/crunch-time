@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjdafmr55656b"]
+
+[ext_resource type="Texture2D" uid="uid://cci7gw73lryt8" path="res://media/backgrounds/home_bg.png" id="1_krot7"]
+[ext_resource type="Texture2D" uid="uid://f34s4blh6ih5" path="res://media/backgrounds/bg-1.jpg" id="2_w18ys"]
+[ext_resource type="Texture2D" uid="uid://dycctqeoqrm1u" path="res://media/ui/home_laptop.png" id="3_reixx"]
+[ext_resource type="PackedScene" uid="uid://bhuxesdw5brec" path="res://scenes/crunch.tscn" id="4_reixx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w18ys"]
+size = Vector2(504, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reixx"]
+size = Vector2(648, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhids"]
+size = Vector2(82, 490)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="HomeBg" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+texture = ExtResource("1_krot7")
+
+[node name="Bg1" type="Sprite2D" parent="."]
+position = Vector2(327.0449, 240)
+scale = Vector2(0.42825848, 0.4870317)
+texture = ExtResource("2_w18ys")
+
+[node name="HomeLaptop" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+texture = ExtResource("3_reixx")
+
+[node name="crunch collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crunch collision"]
+position = Vector2(324, 384)
+shape = SubResource("RectangleShape2D_w18ys")
+
+[node name="crunch ceiling" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crunch ceiling"]
+position = Vector2(316, 27)
+shape = SubResource("RectangleShape2D_reixx")
+
+[node name="crunch collision3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crunch collision3"]
+position = Vector2(31, 235)
+shape = SubResource("RectangleShape2D_uhids")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="crunch collision3"]
+position = Vector2(616, 248)
+shape = SubResource("RectangleShape2D_uhids")
+
+[node name="crunch" parent="crunch collision3" instance=ExtResource("4_reixx")]
+position = Vector2(324, 274)
+scale = Vector2(0.1, 0.1)
