@@ -7,6 +7,8 @@ const JUMP_VELOCITY = -200.0
 var is_moving = false
 var random_walk_direction = 0
 
+@onready var particle_emitter = $AnimatedSprite2D/CPUParticles2D
+
 func _ready() -> void:
 		random_walk()
 
@@ -55,3 +57,5 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				velocity.y = JUMP_VELOCITY
+				particle_emitter.restart()
+				particle_emitter.emitting = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhuxesdw5brec"]
+[gd_scene load_steps=13 format=3 uid="uid://bhuxesdw5brec"]
 
 [ext_resource type="Script" uid="uid://b5ltekcbnbk8l" path="res://scripts/crunch.gd" id="1_64h8r"]
 [ext_resource type="Texture2D" uid="uid://cak4cfj4m1mn8" path="res://media/crunch/crunch_og.png" id="1_wiba4"]
+[ext_resource type="Texture2D" uid="uid://c4aa8idarwgd2" path="res://media/star.png" id="3_xcjbu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uhids"]
 atlas = ExtResource("1_wiba4")
@@ -17,6 +18,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_xcjbu"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.6666667, 1, 0, 1, 0.9137255, 1, 0.78039217, 0.8, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xcjbu"]
 radius = 270.0
@@ -115,6 +120,27 @@ scale = Vector2(0.99999994, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_64h8r")
 offset = Vector2(20, -350)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(-1.9073486e-06, -601)
+emitting = false
+amount = 10
+texture = ExtResource("3_xcjbu")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(300, 50)
+spread = 180.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 50.0
+initial_velocity_max = 400.0
+angle_min = -25.0
+angle_max = 25.0
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+color = Color(1, 1, 1, 0.6901961)
+color_ramp = SubResource("Gradient_xcjbu")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-20, 0)
 scale = Vector2(0.9999998, 0.9999998)
@@ -133,10 +159,5 @@ speed_scale = 2.0
 position = Vector2(-39.999996, 0)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("CapsuleShape2D_xcjbu")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 10
-one_shot = true
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
