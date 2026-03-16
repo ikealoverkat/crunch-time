@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhuxesdw5brec"]
+[gd_scene load_steps=17 format=3 uid="uid://bhuxesdw5brec"]
 
 [ext_resource type="Script" uid="uid://b5ltekcbnbk8l" path="res://scripts/crunch.gd" id="1_64h8r"]
 [ext_resource type="Texture2D" uid="uid://cak4cfj4m1mn8" path="res://media/crunch/crunch_og.png" id="1_wiba4"]
 [ext_resource type="Texture2D" uid="uid://c4aa8idarwgd2" path="res://media/star.png" id="3_xcjbu"]
+[ext_resource type="Texture2D" uid="uid://bxbo5v5ms5wde" path="res://media/crunchster.png" id="4_sic6p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uhids"]
 atlas = ExtResource("1_wiba4")
@@ -26,23 +27,6 @@ colors = PackedColorArray(0.6666667, 1, 0, 1, 0.9137255, 1, 0.78039217, 0.8, 1, 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xcjbu"]
 radius = 270.0
 height = 720.0
-
-[sub_resource type="Animation" id="Animation_64h8r"]
-resource_name = "walk"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(11.313708, 0.25000006, 1),
-"update": 0,
-"values": [Vector2(0.99999994, 0.99999994), Vector2(1.1, 0.9), Vector2(0.99999994, 0.99999994)]
-}
 
 [sub_resource type="Animation" id="Animation_xcjbu"]
 length = 0.001
@@ -103,12 +87,113 @@ tracks/0/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_64h8r"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(11.313708, 0.25000006, 1),
+"update": 0,
+"values": [Vector2(0.99999994, 0.99999994), Vector2(1.1, 0.9), Vector2(0.99999994, 0.99999994)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sic6p"]
 _data = {
 &"RESET": SubResource("Animation_xcjbu"),
 &"default": SubResource("Animation_sic6p"),
 &"jump": SubResource("Animation_yd8so"),
 &"walk": SubResource("Animation_64h8r")
+}
+
+[sub_resource type="Animation" id="Animation_okp41"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5182292, 0.5182292)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(273.00003, 53.000004)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4lrax"]
+resource_name = "anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 0.76666665),
+"transitions": PackedFloat32Array(2.639016, 0.39229208, 0.5000002, 1),
+"update": 0,
+"values": [Vector2(0.5182292, 0.5182292), Vector2(0.6, 0.6), Vector2(0.8, 0.8), Vector2(0.75, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.96666664),
+"transitions": PackedFloat32Array(2.378415, 1),
+"update": 0,
+"values": [Vector2(273.00003, 53.000004), Vector2(273, -150)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhvdd"]
+_data = {
+&"RESET": SubResource("Animation_okp41"),
+&"anim": SubResource("Animation_4lrax")
 }
 
 [node name="crunch" type="CharacterBody2D"]
@@ -160,4 +245,16 @@ position = Vector2(-39.999996, 0)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("CapsuleShape2D_xcjbu")
 
+[node name="EnergyDrink" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(273.00003, 53.000004)
+scale = Vector2(0.5182292, 0.5182292)
+texture = ExtResource("4_sic6p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnergyDrink"]
+libraries = {
+&"": SubResource("AnimationLibrary_lhvdd")
+}
+
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="animation_finished" from="EnergyDrink/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

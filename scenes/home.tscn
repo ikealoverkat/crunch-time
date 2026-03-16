@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjdafmr55656b"]
+[gd_scene load_steps=13 format=3 uid="uid://cjdafmr55656b"]
 
 [ext_resource type="Texture2D" uid="uid://cci7gw73lryt8" path="res://media/backgrounds/home_bg.png" id="1_krot7"]
 [ext_resource type="Texture2D" uid="uid://f34s4blh6ih5" path="res://media/backgrounds/bg-1.jpg" id="2_w18ys"]
 [ext_resource type="Texture2D" uid="uid://dycctqeoqrm1u" path="res://media/ui/home_laptop.png" id="3_reixx"]
 [ext_resource type="PackedScene" uid="uid://bhuxesdw5brec" path="res://scenes/crunch.tscn" id="4_reixx"]
+[ext_resource type="Texture2D" uid="uid://6lg3hv2kmw33" path="res://media/ui/energydrinkcount.png" id="6_mahjx"]
+[ext_resource type="FontFile" uid="uid://ftqg8g00ewu5" path="res://media/bad_handwriting.ttf" id="7_mahjx"]
+[ext_resource type="PackedScene" uid="uid://cn8lsyqyqhrgr" path="res://scenes/nav_button.tscn" id="8_hhep5"]
+[ext_resource type="Texture2D" uid="uid://f06tlyjnkvo4" path="res://media/ui/gacha.png" id="9_cmjdo"]
+[ext_resource type="Texture2D" uid="uid://dweu5tl2w08hg" path="res://media/ui/shop.png" id="10_yu5fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w18ys"]
 size = Vector2(504, 64)
@@ -54,3 +59,37 @@ shape = SubResource("RectangleShape2D_uhids")
 [node name="crunch" parent="crunch collision3" instance=ExtResource("4_reixx")]
 position = Vector2(324, 274)
 scale = Vector2(0.1, 0.1)
+
+[node name="Energydrinkcount" type="Sprite2D" parent="."]
+position = Vector2(543, 109)
+texture = ExtResource("6_mahjx")
+region_enabled = true
+region_rect = Rect2(418.00037, 23.000084, 221.99963, 158.00006)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Energydrinkcount"]
+offset_left = -55.0
+offset_top = -26.0
+offset_right = 4.8816833
+offset_bottom = 41.0
+rotation = -0.2223478
+theme_override_colors/default_color = Color(0.22352941, 0.26666668, 0.6156863, 1)
+theme_override_fonts/normal_font = ExtResource("7_mahjx")
+theme_override_font_sizes/normal_font_size = 64
+text = "0"
+fit_content = true
+scroll_active = false
+
+[node name="HomeLink" parent="." instance=ExtResource("8_hhep5")]
+position = Vector2(114, 120.5)
+
+[node name="GachaLink" parent="." instance=ExtResource("8_hhep5")]
+position = Vector2(182, 120.5)
+texture = ExtResource("9_cmjdo")
+region_rect = Rect2(154.56674, 75.61463, 45.87964, 74.79539)
+buttonLink = "gacha"
+
+[node name="ShopLink" parent="." instance=ExtResource("8_hhep5")]
+position = Vector2(246, 120.5)
+texture = ExtResource("10_yu5fn")
+region_rect = Rect2(212.76567, 74.376564, 57.142868, 73.99607)
+buttonLink = "shop"

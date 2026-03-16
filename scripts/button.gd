@@ -1,5 +1,6 @@
 extends Sprite2D
 
+@export var buttonLink: String = "home"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +16,7 @@ func _process(_delta: float) -> void:
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		$AnimationPlayer.play("click")
-		get_tree().change_scene_to_file("res://scenes/home.tscn")
+		get_tree().change_scene_to_file("res://scenes/"+ buttonLink +".tscn")
 		
 func _on_area_2d_mouse_entered() -> void:
 	$AnimationPlayer.play("hover")
