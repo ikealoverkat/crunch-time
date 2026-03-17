@@ -1,0 +1,238 @@
+[gd_scene load_steps=25 format=3 uid="uid://c75mad2myhstp"]
+
+[ext_resource type="Script" uid="uid://bb87t5bo4dslf" path="res://scripts/gacha.gd" id="1_f8vt1"]
+[ext_resource type="Texture2D" uid="uid://cci7gw73lryt8" path="res://media/backgrounds/home_bg.png" id="1_qt857"]
+[ext_resource type="Texture2D" uid="uid://cm3mrx52egeyn" path="res://media/backgrounds/bg.png" id="2_73l0w"]
+[ext_resource type="Texture2D" uid="uid://c1gt0da63fidy" path="res://media/ui/gacha_machine.png" id="3_q5xra"]
+[ext_resource type="Texture2D" uid="uid://c1pje50xjbjwc" path="res://media/crunchapon.png" id="4_dhnpy"]
+[ext_resource type="Texture2D" uid="uid://dycctqeoqrm1u" path="res://media/ui/home_laptop.png" id="5_ml8bc"]
+[ext_resource type="Texture2D" uid="uid://cfimifktxoi8x" path="res://media/ui/cost.png" id="6_j7vbe"]
+[ext_resource type="PackedScene" uid="uid://cn8lsyqyqhrgr" path="res://scenes/nav_button.tscn" id="7_400ve"]
+[ext_resource type="Script" uid="uid://bvs17a7ec085k" path="res://scripts/roll.gd" id="7_e55n0"]
+[ext_resource type="Texture2D" uid="uid://6lg3hv2kmw33" path="res://media/ui/energydrinkcount.png" id="7_q5xra"]
+[ext_resource type="FontFile" uid="uid://ftqg8g00ewu5" path="res://media/bad_handwriting.ttf" id="8_dhnpy"]
+[ext_resource type="Texture2D" uid="uid://f06tlyjnkvo4" path="res://media/ui/gacha.png" id="8_idesr"]
+[ext_resource type="Texture2D" uid="uid://dweu5tl2w08hg" path="res://media/ui/shop.png" id="9_e55n0"]
+[ext_resource type="Texture2D" uid="uid://di7fam12yknxk" path="res://media/ui/rates.png" id="13_idesr"]
+[ext_resource type="PackedScene" uid="uid://caq2eun3t2i06" path="res://scenes/gamble_screen.tscn" id="18_bgqag"]
+[ext_resource type="Texture2D" uid="uid://bxwibjmjp4aut" path="res://media/ui/not enough.png" id="21_4mft1"]
+[ext_resource type="Texture2D" uid="uid://cunn651ygeoov" path="res://media/ui/close.png" id="22_f8vt1"]
+[ext_resource type="Script" uid="uid://bqparpv13qmvl" path="res://scripts/close.gd" id="23_f8vt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e55n0"]
+size = Vector2(55.6875, 150.25)
+
+[sub_resource type="Animation" id="Animation_rhj8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i7y4x"]
+resource_name = "click"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(2.9281754, 0.32987702, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3q610"]
+resource_name = "end_hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.23325822, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mi6dp"]
+resource_name = "hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2588163, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bdt2"]
+_data = {
+&"RESET": SubResource("Animation_rhj8v"),
+&"click": SubResource("Animation_i7y4x"),
+&"end_hover": SubResource("Animation_3q610"),
+&"hover": SubResource("Animation_mi6dp")
+}
+
+[node name="gacha" type="Node2D"]
+script = ExtResource("1_f8vt1")
+
+[node name="HomeBg" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+texture = ExtResource("1_qt857")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+texture = ExtResource("2_73l0w")
+
+[node name="GachaMachine" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+texture = ExtResource("3_q5xra")
+
+[node name="Crunchapon" type="Sprite2D" parent="GachaMachine"]
+position = Vector2(-36, 40)
+texture = ExtResource("4_dhnpy")
+region_enabled = true
+region_rect = Rect2(234.99948, 231.49976, 92.00006, 77.00003)
+
+[node name="Crunchapon2" type="Sprite2D" parent="GachaMachine"]
+modulate = Color(0.69411767, 1, 0, 1)
+position = Vector2(40, 33)
+rotation = -0.5235988
+texture = ExtResource("4_dhnpy")
+region_enabled = true
+region_rect = Rect2(234.99948, 231.49976, 92.00006, 77.00003)
+
+[node name="Crunchapon3" type="Sprite2D" parent="GachaMachine"]
+modulate = Color(1, 0.53780574, 0.99407, 1)
+position = Vector2(-2, -21)
+rotation = 0.2617994
+texture = ExtResource("4_dhnpy")
+region_enabled = true
+region_rect = Rect2(234.99948, 231.49976, 92.00006, 77.00003)
+
+[node name="HomeLaptop" type="Sprite2D" parent="."]
+position = Vector2(321, 239)
+texture = ExtResource("5_ml8bc")
+
+[node name="Cost" type="Sprite2D" parent="."]
+position = Vector2(170, 353)
+texture = ExtResource("6_j7vbe")
+region_enabled = true
+region_rect = Rect2(84.00015, 313.0003, 180.00012, 100.00006)
+script = ExtResource("7_e55n0")
+
+[node name="Area2D" type="Area2D" parent="Cost"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cost/Area2D"]
+position = Vector2(1.125, 12.84375)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_e55n0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cost"]
+libraries = {
+&"": SubResource("AnimationLibrary_1bdt2")
+}
+
+[node name="HomeLink" parent="." instance=ExtResource("7_400ve")]
+position = Vector2(114, 120.5)
+
+[node name="GachaLink" parent="." instance=ExtResource("7_400ve")]
+position = Vector2(182, 120.5)
+texture = ExtResource("8_idesr")
+region_rect = Rect2(154.56674, 75.61463, 45.87964, 74.79539)
+buttonLink = "gacha"
+
+[node name="ShopLink" parent="." instance=ExtResource("7_400ve")]
+position = Vector2(246, 120.5)
+texture = ExtResource("9_e55n0")
+region_rect = Rect2(212.76567, 74.376564, 57.142868, 73.99607)
+buttonLink = "shop"
+
+[node name="Energydrinkcount" type="Sprite2D" parent="."]
+position = Vector2(520, 109)
+texture = ExtResource("7_q5xra")
+region_enabled = true
+region_rect = Rect2(418.00037, 23.000084, 221.99963, 158.00006)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Energydrinkcount"]
+offset_left = -55.0
+offset_top = -26.0
+offset_right = 4.8816833
+offset_bottom = 41.0
+rotation = -0.2223478
+theme_override_colors/default_color = Color(0.22352941, 0.26666668, 0.6156863, 1)
+theme_override_fonts/normal_font = ExtResource("8_dhnpy")
+theme_override_font_sizes/normal_font_size = 64
+text = "0"
+fit_content = true
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Rates" type="Sprite2D" parent="."]
+position = Vector2(475, 322)
+texture = ExtResource("13_idesr")
+region_enabled = true
+region_rect = Rect2(373.9996, 237.49976, 209.00015, 180.00012)
+
+[node name="brokeScreen" type="ColorRect" parent="."]
+visible = false
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5803922)
+
+[node name="NotEnough" type="Sprite2D" parent="brokeScreen"]
+position = Vector2(319, 242)
+scale = Vector2(1.28, 1.28)
+texture = ExtResource("21_4mft1")
+region_enabled = true
+region_rect = Rect2(141.99945, 148.49971, 357.0002, 228.00014)
+
+[node name="Close" type="Sprite2D" parent="brokeScreen"]
+position = Vector2(461, 158)
+texture = ExtResource("22_f8vt1")
+region_enabled = true
+region_rect = Rect2(410.9996, 176.49973, 44, 43.00003)
+script = ExtResource("23_f8vt1")
+closeNode = "brokeScreen"
+
+[node name="Area2D" type="Area2D" parent="brokeScreen/Close"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brokeScreen/Close/Area2D"]
+position = Vector2(1.25, -0.625)
+rotation = -1.5707964
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_e55n0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="brokeScreen/Close"]
+libraries = {
+&"": SubResource("AnimationLibrary_1bdt2")
+}
+
+[node name="gambleScreen" parent="." instance=ExtResource("18_bgqag")]
+visible = false
+
+[connection signal="input_event" from="Cost/Area2D" to="Cost" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Cost/Area2D" to="Cost" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Cost/Area2D" to="Cost" method="_on_area_2d_mouse_exited"]
+[connection signal="input_event" from="brokeScreen/Close/Area2D" to="brokeScreen/Close" method="_on_area_2d_input_event"]

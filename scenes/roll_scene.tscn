@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kj04gn84wvr2"]
+
+[node name="rollScene" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 0.627451)

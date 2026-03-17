@@ -8,15 +8,16 @@ var is_moving = false
 var random_walk_direction = 0
 var time_per_drink = 10
 
-@onready var energydrinkcount_text = $"../../Energydrinkcount/RichTextLabel"
-@onready var particle_emitter = $AnimatedSprite2D/CPUParticles2D
+@onready var energydrinkcount_text = $"../Energydrinkcount/RichTextLabel"
+@onready var particle_emitter = $Sprite2D/CPUParticles2D
 
+@export var crunch_name: String = "original"
 @export var crunch_rarity: int = 1
 
 func _ready() -> void:
 		random_walk()
 		energy_drink_getter()
-		print(energydrinkcount_text)
+		energydrinkcount_text.text = str(constants.energy_drink_count)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -43,8 +44,8 @@ func random_walk() -> void:
 
 func energy_drink_getter() -> void:
 	while true:
-		await get_tree().create_timer(time_per_drink).timeout #wait for the drink to appear before increasing energy drink count
-		constants.energy_drink_count += 1 * crunch_rarity
+		await get_tree().create_timer(time_per_drink / crunch_rarity).timeout #wait for the drink to appear before increasing energy drink count
+		constants.energy_drink_count += 1
 		$EnergyDrink.show()
 		$EnergyDrink/AnimationPlayer.play("anim")
 		await $EnergyDrink/AnimationPlayer.animation_finished

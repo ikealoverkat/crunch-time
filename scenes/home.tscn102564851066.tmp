@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjdafmr55656b"]
+[gd_scene load_steps=14 format=3 uid="uid://cjdafmr55656b"]
 
 [ext_resource type="Script" uid="uid://cip0cqa7t8duj" path="res://scripts/load_crunches.gd" id="1_hhep5"]
 [ext_resource type="Texture2D" uid="uid://cci7gw73lryt8" path="res://media/backgrounds/home_bg.png" id="1_krot7"]
 [ext_resource type="Texture2D" uid="uid://f34s4blh6ih5" path="res://media/backgrounds/bg-1.jpg" id="2_w18ys"]
 [ext_resource type="Texture2D" uid="uid://dycctqeoqrm1u" path="res://media/ui/home_laptop.png" id="3_reixx"]
+[ext_resource type="PackedScene" uid="uid://bhuxesdw5brec" path="res://scenes/crunch.tscn" id="4_reixx"]
 [ext_resource type="Texture2D" uid="uid://6lg3hv2kmw33" path="res://media/ui/energydrinkcount.png" id="6_mahjx"]
 [ext_resource type="FontFile" uid="uid://ftqg8g00ewu5" path="res://media/bad_handwriting.ttf" id="7_mahjx"]
 [ext_resource type="PackedScene" uid="uid://cn8lsyqyqhrgr" path="res://scenes/nav_button.tscn" id="8_hhep5"]
@@ -91,3 +92,7 @@ position = Vector2(246, 120.5)
 texture = ExtResource("10_yu5fn")
 region_rect = Rect2(212.76567, 74.376564, 57.142868, 73.99607)
 buttonLink = "shop"
+
+[node name="crunch" parent="." instance=ExtResource("4_reixx")]
+position = Vector2(114, 294)
+scale = Vector2(0.1, 0.1)

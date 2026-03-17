@@ -1,3 +1,47 @@
-[gd_scene format=3 uid="uid://cfageifvkt5rb"]
+[gd_scene load_steps=4 format=3 uid="uid://cfageifvkt5rb"]
+
+[ext_resource type="FontFile" uid="uid://ftqg8g00ewu5" path="res://media/bad_handwriting.ttf" id="1_6wm04"]
+[ext_resource type="PackedScene" uid="uid://b8gnjbkkm80uy" path="res://scenes/button.tscn" id="2_f4mfi"]
+[ext_resource type="Texture2D" uid="uid://opus2hsdtbfg" path="res://media/ui/empty_button.png" id="3_es4n0"]
 
 [node name="settings" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 637.0
+offset_bottom = 475.0
+mouse_filter = 2
+color = Color(0.89411765, 1, 0.75686276, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 133.0
+offset_right = 538.0
+offset_bottom = 393.0
+theme_override_colors/default_color = Color(0.12704486, 0.19461477, 0.42456016, 1)
+theme_override_fonts/normal_font = ExtResource("1_6wm04")
+theme_override_font_sizes/normal_font_size = 51
+bbcode_enabled = true
+text = "[center]no settings yet ;_;
+(there are no sounds or music to turn on/off LOL)
+stay tuned 4 updates![/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Sprite2D" parent="." instance=ExtResource("2_f4mfi")]
+position = Vector2(75, 50)
+texture = ExtResource("3_es4n0")
+buttonLink = "menu"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D"]
+offset_left = -36.0
+offset_top = -2.0
+offset_right = 55.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.122020744, 0.22186121, 0.43704128, 1)
+theme_override_fonts/normal_font = ExtResource("1_6wm04")
+theme_override_font_sizes/normal_font_size = 41
+text = "back"
+fit_content = true
+scroll_active = false

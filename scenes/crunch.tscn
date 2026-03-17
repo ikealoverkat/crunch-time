@@ -1,28 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhuxesdw5brec"]
+[gd_scene load_steps=14 format=3 uid="uid://bhuxesdw5brec"]
 
 [ext_resource type="Script" uid="uid://b5ltekcbnbk8l" path="res://scripts/crunch.gd" id="1_64h8r"]
 [ext_resource type="Texture2D" uid="uid://cak4cfj4m1mn8" path="res://media/crunch/crunch_og.png" id="1_wiba4"]
 [ext_resource type="Texture2D" uid="uid://c4aa8idarwgd2" path="res://media/star.png" id="3_xcjbu"]
 [ext_resource type="Texture2D" uid="uid://bxbo5v5ms5wde" path="res://media/crunchster.png" id="4_sic6p"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhids"]
-atlas = ExtResource("1_wiba4")
-region = Rect2(0, 0, 768, 768)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_64h8r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uhids")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
-
-[sub_resource type="Gradient" id="Gradient_xcjbu"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0.6666667, 1, 0, 1, 0.9137255, 1, 0.78039217, 0.8, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xcjbu"]
 radius = 270.0
@@ -30,30 +11,6 @@ height = 720.0
 
 [sub_resource type="Animation" id="Animation_xcjbu"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.99999994, 0.99999994)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(20, -350)]
-}
 
 [sub_resource type="Animation" id="Animation_sic6p"]
 resource_name = "default"
@@ -62,29 +19,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335, 0.5, 1, 1.5, 2),
+"times": PackedFloat32Array(0, 0.46666667, 0.96666664, 1.4666667, 1.9666667),
 "transitions": PackedFloat32Array(2.7320802, 0.48296818, 2.000001, 0.50000006, 1),
 "update": 0,
 "values": [Vector2(0.99999994, 0.99999994), Vector2(1.0232142, 0.97678566), Vector2(1.05, 0.95), Vector2(1.0232142, 0.97678566), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_yd8so"]
-resource_name = "jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
 }
 
 [sub_resource type="Animation" id="Animation_64h8r"]
@@ -94,7 +36,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,7 +50,6 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_xcjbu"),
 &"default": SubResource("Animation_sic6p"),
-&"jump": SubResource("Animation_yd8so"),
 &"walk": SubResource("Animation_64h8r")
 }
 
@@ -196,35 +137,12 @@ _data = {
 &"anim": SubResource("Animation_4lrax")
 }
 
+[sub_resource type="Gradient" id="Gradient_xcjbu"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.6666667, 1, 0, 1, 0.9137255, 1, 0.78039217, 0.8, 1, 1, 1, 0)
+
 [node name="crunch" type="CharacterBody2D"]
 script = ExtResource("1_64h8r")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-19.999998, 349.99997)
-scale = Vector2(0.99999994, 0.99999994)
-sprite_frames = SubResource("SpriteFrames_64h8r")
-offset = Vector2(20, -350)
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
-position = Vector2(-1.9073486e-06, -601)
-emitting = false
-amount = 10
-texture = ExtResource("3_xcjbu")
-lifetime = 0.4
-one_shot = true
-explosiveness = 0.4
-emission_shape = 3
-emission_rect_extents = Vector2(300, 50)
-spread = 180.0
-gravity = Vector2(0, -30)
-initial_velocity_min = 50.0
-initial_velocity_max = 400.0
-angle_min = -25.0
-angle_max = 25.0
-scale_amount_min = 0.2
-scale_amount_max = 0.5
-color = Color(1, 1, 1, 0.6901961)
-color_ramp = SubResource("Gradient_xcjbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-20, 0)
@@ -255,6 +173,34 @@ texture = ExtResource("4_sic6p")
 libraries = {
 &"": SubResource("AnimationLibrary_lhvdd")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.1368684e-13, 383.99997)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_wiba4")
+offset = Vector2(-1.9073486e-06, -383.99997)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
+position = Vector2(-1.9073486e-06, -600.99994)
+scale = Vector2(0.99999994, 0.99999994)
+emitting = false
+amount = 10
+texture = ExtResource("3_xcjbu")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(300, 50)
+spread = 180.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 50.0
+initial_velocity_max = 400.0
+angle_min = -25.0
+angle_max = 25.0
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+color = Color(1, 1, 1, 0.6901961)
+color_ramp = SubResource("Gradient_xcjbu")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="animation_finished" from="EnergyDrink/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

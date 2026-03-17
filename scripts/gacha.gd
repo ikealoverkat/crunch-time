@@ -1,15 +1,10 @@
-extends Node
-class_name constants
+extends Node2D
 
-static var energy_drink_count = 10
-static var crunch_count = 1
-static var crunch_list = ["og"]
-static var crunch_rarities = [1]
-
+@onready var energydrinkcounter = get_node("./Energydrinkcount/RichTextLabel")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	energydrinkcounter.text = str(constants.energy_drink_count)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
