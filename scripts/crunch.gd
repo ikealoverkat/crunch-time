@@ -17,7 +17,7 @@ var time_per_drink = 10
 func _ready() -> void:
 		random_walk()
 		energy_drink_getter()
-		energydrinkcount_text.text = str(constants.energy_drink_count)
+		energydrinkcount_text.text = "[center]" + str(constants.energy_drink_count) + "[/center]"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -50,7 +50,7 @@ func energy_drink_getter() -> void:
 		$EnergyDrink/AnimationPlayer.play("anim")
 		await $EnergyDrink/AnimationPlayer.animation_finished
 		$EnergyDrink.hide()
-		energydrinkcount_text.text = str(constants.energy_drink_count)
+		energydrinkcount_text.text = "[center]" + str(constants.energy_drink_count) + "[/center]"
 		#print("crunch got you an energy drink! you have " + str(constants.energy_drink_count) + " energy drinks")
 
 

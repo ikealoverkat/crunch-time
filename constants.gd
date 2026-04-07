@@ -1,11 +1,10 @@
 extends Node
 class_name constants
 
-static var energy_drink_count = 10
+static var energy_drink_count = 100
 static var crunch_count = 1
 static var crunch_list = ["og"]
 static var crunch_rarities = [1]
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c75mad2myhstp"]
+[gd_scene load_steps=24 format=3 uid="uid://c75mad2myhstp"]
 
 [ext_resource type="Script" uid="uid://bb87t5bo4dslf" path="res://scripts/gacha.gd" id="1_f8vt1"]
 [ext_resource type="Texture2D" uid="uid://cci7gw73lryt8" path="res://media/backgrounds/home_bg.png" id="1_qt857"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://6lg3hv2kmw33" path="res://media/ui/energydrinkcount.png" id="7_q5xra"]
 [ext_resource type="FontFile" uid="uid://ftqg8g00ewu5" path="res://media/bad_handwriting.ttf" id="8_dhnpy"]
 [ext_resource type="Texture2D" uid="uid://f06tlyjnkvo4" path="res://media/ui/gacha.png" id="8_idesr"]
-[ext_resource type="Texture2D" uid="uid://dweu5tl2w08hg" path="res://media/ui/shop.png" id="9_e55n0"]
 [ext_resource type="Texture2D" uid="uid://di7fam12yknxk" path="res://media/ui/rates.png" id="13_idesr"]
 [ext_resource type="PackedScene" uid="uid://caq2eun3t2i06" path="res://scenes/gamble_screen.tscn" id="18_bgqag"]
 [ext_resource type="Texture2D" uid="uid://bxwibjmjp4aut" path="res://media/ui/not enough.png" id="21_4mft1"]
@@ -162,12 +161,6 @@ texture = ExtResource("8_idesr")
 region_rect = Rect2(154.56674, 75.61463, 45.87964, 74.79539)
 buttonLink = "gacha"
 
-[node name="ShopLink" parent="." instance=ExtResource("7_400ve")]
-position = Vector2(246, 120.5)
-texture = ExtResource("9_e55n0")
-region_rect = Rect2(212.76567, 74.376564, 57.142868, 73.99607)
-buttonLink = "shop"
-
 [node name="Energydrinkcount" type="Sprite2D" parent="."]
 position = Vector2(520, 109)
 texture = ExtResource("7_q5xra")
@@ -175,17 +168,24 @@ region_enabled = true
 region_rect = Rect2(418.00037, 23.000084, 221.99963, 158.00006)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Energydrinkcount"]
+anchors_preset = -1
+anchor_left = -0.16514939
+anchor_top = 0.05222586
+anchor_right = 0.11598834
+anchor_bottom = 0.05222586
 offset_left = -55.0
-offset_top = -26.0
+offset_top = -22.999994
 offset_right = 4.8816833
-offset_bottom = 41.0
+offset_bottom = 44.000008
 rotation = -0.2223478
 theme_override_colors/default_color = Color(0.22352941, 0.26666668, 0.6156863, 1)
 theme_override_fonts/normal_font = ExtResource("8_dhnpy")
-theme_override_font_sizes/normal_font_size = 64
-text = "0"
+theme_override_font_sizes/normal_font_size = 55
+bbcode_enabled = true
+text = "[center]0[/center]"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Rates" type="Sprite2D" parent="."]

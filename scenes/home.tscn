@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjdafmr55656b"]
+[gd_scene load_steps=12 format=3 uid="uid://cjdafmr55656b"]
 
 [ext_resource type="Script" uid="uid://cip0cqa7t8duj" path="res://scripts/load_crunches.gd" id="1_hhep5"]
 [ext_resource type="Texture2D" uid="uid://cci7gw73lryt8" path="res://media/backgrounds/home_bg.png" id="1_krot7"]
@@ -8,7 +8,6 @@
 [ext_resource type="FontFile" uid="uid://ftqg8g00ewu5" path="res://media/bad_handwriting.ttf" id="7_mahjx"]
 [ext_resource type="PackedScene" uid="uid://cn8lsyqyqhrgr" path="res://scenes/nav_button.tscn" id="8_hhep5"]
 [ext_resource type="Texture2D" uid="uid://f06tlyjnkvo4" path="res://media/ui/gacha.png" id="9_cmjdo"]
-[ext_resource type="Texture2D" uid="uid://dweu5tl2w08hg" path="res://media/ui/shop.png" id="10_yu5fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w18ys"]
 size = Vector2(504, 64)
@@ -64,17 +63,24 @@ region_enabled = true
 region_rect = Rect2(418.00037, 23.000084, 221.99963, 158.00006)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Energydrinkcount"]
+anchors_preset = -1
+anchor_left = -0.16514939
+anchor_top = 0.05222586
+anchor_right = 0.11598834
+anchor_bottom = 0.05222586
 offset_left = -55.0
-offset_top = -26.0
+offset_top = -22.999994
 offset_right = 4.8816833
-offset_bottom = 41.0
+offset_bottom = 44.000008
 rotation = -0.2223478
 theme_override_colors/default_color = Color(0.22352941, 0.26666668, 0.6156863, 1)
 theme_override_fonts/normal_font = ExtResource("7_mahjx")
-theme_override_font_sizes/normal_font_size = 64
-text = "0"
+theme_override_font_sizes/normal_font_size = 55
+bbcode_enabled = true
+text = "[center]0[/center]"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="HomeLink" parent="." instance=ExtResource("8_hhep5")]
@@ -85,9 +91,3 @@ position = Vector2(182, 120.5)
 texture = ExtResource("9_cmjdo")
 region_rect = Rect2(154.56674, 75.61463, 45.87964, 74.79539)
 buttonLink = "gacha"
-
-[node name="ShopLink" parent="." instance=ExtResource("8_hhep5")]
-position = Vector2(246, 120.5)
-texture = ExtResource("10_yu5fn")
-region_rect = Rect2(212.76567, 74.376564, 57.142868, 73.99607)
-buttonLink = "shop"
