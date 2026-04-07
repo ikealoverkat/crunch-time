@@ -1,7 +1,7 @@
 extends Node
 class_name constants
 
-static var energy_drink_count = 100
+static var energy_drink_count = 10
 static var crunch_count = 1
 static var crunch_list = ["og"]
 static var crunch_rarities = [1]
